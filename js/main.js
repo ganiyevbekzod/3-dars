@@ -2,6 +2,8 @@ var elBody = document.querySelector("body");
 var elList = document.querySelector(".js-list");
 var elSelect=document.querySelector(".js-select");
 var elOption=document.querySelector(".js-option");
+let elForm=document.querySelector(".js-form");
+let elInput=document.querySelector(".js-input");
 
 elBody.style.background="linear-gradient(72.67deg, #1A1822 2.78%, #9040E3 173.27%), #6B50FF";
 function wiew(Array,node) {
@@ -58,3 +60,19 @@ function wiew(Array,node) {
 	wiew(films,elList);
 }
   })
+
+  let newArr=[];
+  elForm.addEventListener('input', (evt) =>{
+    evt.preventDefault();
+    newArr=[];
+    elList.innerHTML='';
+    let elInputVal=elInput.value.toLocaleLowerCase();
+    films.forEach((el)=>{
+      if(el.title.toLocaleLowerCase().includes(elInputVal))
+	  {
+        newArr.push(el);
+        wiew(newArr,elList)
+      }
+    });
+    console.log(newArr);
+  });
