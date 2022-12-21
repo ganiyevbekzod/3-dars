@@ -1,6 +1,7 @@
 var elBody = document.querySelector("body");
 var elList = document.querySelector(".js-list");
 var elSelect=document.querySelector(".js-select");
+var elSelect2=document.querySelector(".js-select2");
 var elOption=document.querySelector(".js-option");
 let elForm=document.querySelector(".js-form");
 let elInput=document.querySelector(".js-input");
@@ -76,3 +77,51 @@ function wiew(Array,node) {
     });
     console.log(newArr);
   });
+
+
+
+  //Sort
+//   const TartiblanganFilms=films.sort((a,b) =>{
+// 	let FilmsA=a.toUppercase();
+// 	let FilmsB=b.toUppercase();
+
+// 	if(FilmsB>FilmsA){
+// 		return -1
+// 	}
+// 	if(FilmsA>FilmsB){
+// 		return 1
+// 	}
+// 	return 0
+//   })
+
+
+  var newsorte = []
+
+elSelect2.addEventListener('change',function(){
+	newsorte = []
+	elList.innerHTML = ''
+
+films.forEach((els)=>{
+	newsorte.push(els)
+	newsorte.sort((a,b)=> 
+	a.title.toLocaleLowerCase().charCodeAt(0) - 
+	b.title.toLocaleLowerCase().charCodeAt(0))
+
+})
+
+if(elSelect2.value == 'a-z'){
+
+	newsorte.sort((a,b)=> 
+	a.title.toLocaleLowerCase().charCodeAt(0) - 
+	b.title.toLocaleLowerCase().charCodeAt(0))
+	wiew(newsorte,elList)
+}
+
+if(elSelect2.value == 'z-a'){
+	
+	newsorte.sort((a,b)=>
+	b.title.toLocaleLowerCase().charCodeAt(0) - 
+	a.title.toLocaleLowerCase().charCodeAt(0))
+	wiew(newsorte,elList)
+}
+})
